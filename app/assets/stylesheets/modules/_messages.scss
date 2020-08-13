@@ -35,29 +35,30 @@
                 }
 
             }
-
-
         }   
     } 
-    .Group-list{
+    .Group-list{ 
         height: calc(100vh - 100px);
         width: 300px;
         background-color: #2f3e51;
-        color: #ffffff;
         padding: 0 20px;
-        .Group{ 
+        .Groups{
             padding: 20px 0 40px;
-            &__name{
-                font-size: 15px;
+            .Group{
+
+                color: #ffffff;
+                text-decoration: none;
+                &__name{
+                    font-size: 15px;
+                }
+                &__messages{
+                    font-size: 11px;
+                    margin-top: 5px;    
+                }
             }
-            &__messages{
-                font-size: 11px;
-                margin-top: 5px;    
-            }
-        }
-    }   
-}
- 
+        }    
+    }
+} 
 
 .Chat {
     .RightHeder-group{
