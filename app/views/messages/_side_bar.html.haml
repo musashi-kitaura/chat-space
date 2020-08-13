@@ -13,8 +13,10 @@
                         =icon('fas','cog' )
 
     .Group-list
-        .Group
-            .Group__name
-                techcamp
-            .Group__messages
-                まだメッセージはありません。
+        - current_user.groups.each do |group|
+            .Groups
+                = link_to '#', class:Group do    
+                    .Group__name
+                        = group.name
+                    .Group__messages
+                        まだメッセージはありません。
