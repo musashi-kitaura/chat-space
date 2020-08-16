@@ -1,39 +1,25 @@
 .Chat
     .RightHeder-group
+        
         .groupname
-            test
+            =@group.name
             %ul.groupname__menberlist
                 Member:
                 %li.groupname__menbername
-                    masa
+                    - @group.users.each do |user|
+                        =user.name
 
-        = link_to "#",class: "RightHeader__EditBtn"  do
+        = link_to edit_group_path(@group.id),class: "RightHeader__EditBtn"  do
             Edit
  
     .Message_box
-        .Message__info
-            .Message__list
-                .Message__list__username
-                    masa
-                .Message__list__date
-                    2019/11/20(wed)17:43:01
-            .Message
-                おはよう！    
-         
-        .Message__info   
-            .Message__list
-                .Message__list__username
-                    masa
-                .Message__list__date
-                    2019/11/20(wed)17:43:34
-            .Message
-                最高         
-
+        = render @messages
+        
     .Footer
-        %form.Form
+        = form_with model: [@group, @message], html: {class: "Form"}, local: true do |f|
             .Form-contents
-                %input{type:"text",class:"Form-contents__message",placeholder:"type a message"}
-                %label{class: "Form-contents__image"}
+                = f.text_field :content, class: "Form-contents__message", placeholder: 'type a message'
+                = f.label :image, class: "Form-contents__image" do
                     = icon('fas', 'image')
-                    %input{type: "file" ,class:"Form-contents__image__file"}
-            %input{type:"submit",class:"Form__submit",value:"Send"}        
+                    = f.file_field :image, class: "Form-contents__image__file"
+            = f.submit 'Send', class: 'Form__submit'
